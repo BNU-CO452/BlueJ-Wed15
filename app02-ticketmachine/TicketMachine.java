@@ -25,11 +25,11 @@ public class TicketMachine
     /**
      * Create a machine that issues tickets of the given price.
      */
-    public TicketMachine(int cost)
+    public TicketMachine()
     {
         balance = 0;
         total = 0;
-        this.price = cost;
+        createTickets();
     }
 
     /**
