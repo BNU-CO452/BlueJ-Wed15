@@ -20,6 +20,8 @@ public class TicketMachine
 
     private int price;
     
+    private Ticket ticketToAylesbury;
+    
     /**
      * Create a machine that issues tickets of the given price.
      */
@@ -30,6 +32,14 @@ public class TicketMachine
         this.price = cost;
     }
 
+    /**
+     * 
+     */
+    private void createTickets()
+    {
+        ticketToAylesbury = new Ticket("Aylesbury", 220);
+        //todo add two more tickets
+    }
 
     /**
      * Return The amount of money already inserted for the
