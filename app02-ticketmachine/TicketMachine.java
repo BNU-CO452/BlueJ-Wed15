@@ -78,12 +78,7 @@ public class TicketMachine
         if(balance >= price) 
         {
             // Simulate the printing of a ticket.
-            System.out.println("##################");
-            System.out.println("# The BlueJ Line");
-            System.out.println("# Ticket");
-            System.out.println("# " + price + " cents.");
-            System.out.println("##################");
-            System.out.println();
+
 
             // Update the total collected with the price.
             total = total + price;
@@ -108,5 +103,20 @@ public class TicketMachine
         amountToRefund = balance;
         balance = 0;
         return amountToRefund;
+    }
+    
+    public void printAllTickets()
+    {
+        printHeading();
+        System.out.println();
+        ticketToAylesbury.print();
+    }
+    
+    public void printHeading()
+    {
+        System.out.println("##################");
+        System.out.println("# The BlueJ Line");
+        System.out.println("##################");
+        System.out.println();        
     }
 }
