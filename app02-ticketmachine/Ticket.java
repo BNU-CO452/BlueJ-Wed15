@@ -1,3 +1,4 @@
+import java.util.Date;
 
 /**
  * Write a description of class Ticket here.
@@ -12,6 +13,8 @@ public class Ticket
     // this is in pence
     private int price;
     
+    private Date datePurchased = new Date();
+    
     /**
      * Constructor for objects of class Ticket
      */
@@ -21,15 +24,35 @@ public class Ticket
         destination = "Aylesbury";
     }
     
+    /**
+     * 
+     */
     public Ticket(String destination, int price)
     {
         this.price = price;
         this.destination = destination;
     }
     
-    public void setPrice(int price)
+    /**
+     * 
+     */
+    public int getPrice()
     {
-        this.price = price;
+        return price;
+    }
+    
+    /**
+     * 
+     */
+    public String getDestination()
+    {
+        return destination;
+    }
+    
+    public void print()
+    {
+        System.out.print("Destination: " + destination);
+        System.out.println(" Price " + price + " pence");
     }
 
 }
