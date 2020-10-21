@@ -13,7 +13,10 @@
  */
 public class TicketMachine
 {
-    // The amount of money entered by a customer so far.
+    public static final Ticket AYLESBURY_TICKET =
+             new Ticket("Aylesbury", 200);
+
+             // The amount of money entered by a customer so far.
     private int balance;
     // The total amount of money collected by this machine.
     private int total;
@@ -22,6 +25,8 @@ public class TicketMachine
     
     private Ticket ticketToAylesbury;
     
+    private Ticket userTicket = null;
+    
     /**
      * Create a machine that issues tickets of the given price.
      */
@@ -29,6 +34,7 @@ public class TicketMachine
     {
         balance = 0;
         total = 0;
+        
         createTickets();
     }
 
@@ -119,4 +125,14 @@ public class TicketMachine
         System.out.println("##################");
         System.out.println();        
     }
+    
+    public void selectAylesbury()
+    {
+        userTicket = ticketToAylesbury;
+    }
+    
+   public void selectAmersham()
+    {
+        userTicket = ticketToAylesbury;
+    }    
 }
