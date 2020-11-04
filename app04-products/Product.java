@@ -72,7 +72,7 @@ public class Product
      * @param amount The number of new items added to the stock.
      *               This must be greater than zero.
      */
-    public void increaseQuantity(int amount)
+    public void deliver(int amount)
     {
         if(amount > 0) 
         {
@@ -81,7 +81,7 @@ public class Product
         else 
         {
             System.out.println("Attempt to restock " + name +
-                               " with a non-positive amount: " + amount);
+                               " with a negative or zero amount: " + amount);
         }
     }
 
@@ -91,14 +91,19 @@ public class Product
      */
     public void sell(int saleQuantity)
     {
-        if(quantity >= saleQuantity) 
+        if(saleQuantity > quantity) 
         {
-            quantity -= saleQuantity;
+            System.out.println("Only " + quantity + " " + name + 
+                 " in stock, but there were " + 
+                 saleQuantity + " ordered ");
+                
+            quantity = 0;
         }
         else 
         {
             System.out.println(
-                "Attempt to sell an out of stock item: " + name);
+                "Selling " + saleQuantity + " of stock item: " + name);
+                quantity -= saleQuantity;
         }
     }
 }

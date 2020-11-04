@@ -1,4 +1,10 @@
-/**
+
+
+
+
+
+import java.util.Random;
+/** 
  * Demonstrate the StockManager and Product classes.
  * The demonstration becomes properly functional as
  * the StockManager class is completed.
@@ -10,6 +16,10 @@ public class StockDemo
 {
     // The stock manager.
     private StockManager manager;
+    
+    private Random generator = new Random();
+    
+    private int amount = 0;
 
     /**
      * Create a StockManager and populate it with a few
@@ -22,6 +32,15 @@ public class StockDemo
         manager.addProduct(new Product(101, "Samsung Galaxy S20"));
         manager.addProduct(new Product(102, "Apple iPhone 12"));
         manager.addProduct(new Product(103, "Google Pixel 4A"));
+        manager.addProduct(new Product(104, "Samsung Galaxy S20"));
+        manager.addProduct(new Product(105, "Apple iPhone 12"));
+        manager.addProduct(new Product(106, "Google Pixel 4A")); 
+        manager.addProduct(new Product(107, "Samsung Galaxy S20"));
+        manager.addProduct(new Product(108, "Apple iPhone 12"));
+        manager.addProduct(new Product(109, "Google Pixel 4A"));
+        manager.addProduct(new Product(110, "Samsung Galaxy S20"));
+        manager.addProduct(new Product(111, "Apple iPhone 12"));
+        manager.addProduct(new Product(112, "Google Pixel 4A"));        
     }
     
     /**
@@ -29,70 +48,42 @@ public class StockDemo
      * might be used. Details of one product are shown, the
      * product is restocked, and then the details are shown again.
      */
-    public void demo()
+    public void runDemo()
     {
-        // Show details of all of the products.
         manager.printAllProducts();
-        // Take delivery of 5 items of one of the products.
-        manager.delivery(132, 5);
-        manager.printAllProducts();
+        
+        int noProducts = manager.numberProductsInStock();
+        
+        System.out.println("No of Products in Stock = " + noProducts);
+        
+        demoDeliverProducts();
+        
+        demoSellProducts();
     }
     
-    /**
-     * Show details of the given product. If found,
-     * its name and stock quantity will be shown.
-     * @param id The ID of the product to look for.
-     */
-    public void showDetails(int id)
+    private void demoSellProducts()
     {
-        Product product = getProduct(id);
+        System.out.println("\nSelling all the products\n");
         
-        if(product != null) 
+        for(int id = 101; id <= 112; id++)
         {
-            System.out.println(product.toString());
+           amount = generator.nextInt(4);
+           manager.sellProduct(id, amount); 
         }
-    }
-    
-    /**
-     * Sell one of the given item.
-     * Show the before and after status of the product.
-     * @param id The ID of the product being sold.
-     */
-    public void sellProduct(int id)
-    {
-        Product product = getProduct(id);
         
-        if(product != null) 
-        {
-            showDetails(id);
-            product.sell(5);
-            showDetails(id);
-        }
-    }
-    
-    /**
-     * Get the product with the given id from the manager.
-     * An error message is printed if there is no match.
-     * @param id The ID of the product.
-     * @return The Product, or null if no matching one is found.
-     */
-    public Product getProduct(int id)
-    {
-        Product product = manager.findProduct(id);
-        
-        if(product == null) 
-        {
-            System.out.println("Product with ID: " + id +
-                               " is not recognised.");
-        }
-        return product;
+        manager.printAllProducts();        
     }
 
-    /**
-     * @return The stock manager.
-     */
-    public StockManager getManager()
+    private void demoDeliverProducts()
     {
-        return manager;
+        System.out.println("\nDelivering all the products\n");
+        
+        for(int id = 101; id <= 112; id++)
+        {
+           amount = generator.nextInt(8);
+           manager.delivery(id, amount); 
+        }
+        
+        manager.printAllProducts();        
     }
 }
