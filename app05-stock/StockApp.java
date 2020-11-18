@@ -87,9 +87,21 @@ public class StockApp
         String value = input.getString();
         
         int id = Integer.parseInt(value);
-        Product product = new Product(id, name);
         
-        manager.addProduct(product);
+        if(manager.isDuplicate(id))
+        {
+            System.out.println("Duplicate id!!!");
+        }
+        else
+        {
+            Product product = new Product(id, name);
+        
+            manager.addProduct(product);
+        
+            System.out.println("\nNew Product added " + product + "\n");
+            
+        }
+        
     }
 
 
