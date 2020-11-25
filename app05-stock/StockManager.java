@@ -82,6 +82,24 @@ public class StockManager
     /**
      * 
      */
+    public ArrayList getLowStock(int minLevel)
+    {
+        ArrayList<Product> lowStock = new ArrayList();
+        lowStock.add(null);
+        
+        return lowStock;
+    }
+    
+    /**
+     * 
+     */
+    public void reStock(int minLevel)
+    {
+    }
+    
+    /**
+     * 
+     */
     public boolean isDuplicate(int id)
     {
         Product product = findProduct(id);

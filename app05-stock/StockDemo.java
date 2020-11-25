@@ -1,8 +1,3 @@
-
-
-
-
-
 import java.util.Random;
 /** 
  * Demonstrate the StockManager and Product classes.

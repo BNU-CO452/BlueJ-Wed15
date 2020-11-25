@@ -32,4 +32,12 @@ public class InputReader
 
         return inputLine;
     }
+    
+    public int getInt(String prompt)
+    {
+        System.out.print(prompt);         
+        int number = reader.nextInt();
+
+        return number;
+    }    
 }

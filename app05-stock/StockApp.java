@@ -19,7 +19,9 @@ public class StockApp
     private StockManager manager;
     
     private StockDemo demo;
-
+    
+    private String [] menuChoices;
+    
     /**
      * Constructor for objects of class StockApp
      */
@@ -28,6 +30,19 @@ public class StockApp
         input = new InputReader();
         manager = new StockManager();
         demo = new StockDemo(manager);
+        
+        createMenu();
+    }
+    
+    private void createMenu()
+    {
+        menuChoices = new String []
+        {
+            "Add a new product",
+            "Remove an old product",
+            "Print all products",
+            "Quit the program"
+        };
     }
 
     /**
@@ -41,19 +56,21 @@ public class StockApp
         while(!finished)
         {
             printHeading();
-            printMenuChoices();
+            Menu.displayChoices(menuChoices);
+            int choiceNo = Menu.getChoice(menuChoices);
 
-            String choice = input.getString();
-            choice = choice.toUpperCase();
+            if(choiceNo == 4) finished = true;
+            // String choice = input.getString();
+            // choice = choice.toUpperCase();
 
-            if(choice.equals("QUIT"))
-            {
-                finished = true;
-            }
-            else
-            {
-                executeMenuChoice(choice);
-            }
+            // if(choice.equals("QUIT"))
+            // {
+                // finished = true;
+            // }
+            // else
+            // {
+                // executeMenuChoice(choice);
+            // }
         }
     }
 
@@ -126,13 +143,14 @@ public class StockApp
      */
     private void printMenuChoices()
     {
-        System.out.println();
-        System.out.println();
-        System.out.println("    Add:        Add a new product");
-        System.out.println("    Remove:     Remove an old product");
-        System.out.println("    PrintAll:   Print all products");
-        System.out.println("    Quit:       Quit the program");
-        System.out.println();        
+        
+        // System.out.println();
+        // System.out.println();
+        // System.out.println("    Add:        Add a new product");
+        // System.out.println("    Remove:     Remove an old product");
+        // System.out.println("    PrintAll:   Print all products");
+        // System.out.println("    Quit:       Quit the program");
+        // System.out.println();        
     }
 
     /**
